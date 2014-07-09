@@ -8,9 +8,27 @@ document.addEventListener('DOMContentLoaded', function(){
 		width: 74,
 		height: 98,
 		margin: 5,
+		cards: [],
 		myCards: [],
 		buttons: {
-			shuffle: document.getElementById('shuffle')
+			shuffle: document.getElementById('shuffle'),
+			deal: document.getElementById('deal'),
+			reset: document.getElementById('reset')		
+		},
+
+		reset: function(){
+
+			var self = this;
+			
+			console.log("reset");
+			console.log(self.cards);
+
+			self.myCards = self.cards.slice();
+
+			self.myCards.forEach(function(cardElement, k){
+				self.positionCard(cardElement, k);
+			});
+
 		},
 
 		cardsToArray: function(){
@@ -22,16 +40,15 @@ document.addEventListener('DOMContentLoaded', function(){
 				self.myCards.push(cards.item(i));
 			}
 
+			self.cards = self.myCards.slice(0); // original data, copy by value
+
 		},
 
 		shuffleCards: function(){
 
 			var self = this;
-
-			console.log("my shuffleCards fn called!");
-			console.log(self.myCards);
-
-			self.myCards = self.shuffleArray(self.myCards)
+			
+			self.myCards = self.shuffleArray(self.myCards);
 
 			self.myCards.forEach(function(cardElement, k){
 				self.positionCard(cardElement, k);
@@ -85,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function(){
 			var self = this;
 
 			// Create cards and set default position
-			var cards;
-
 			self.generateCards();
 			self.cardsToArray();
 
@@ -94,8 +109,9 @@ document.addEventListener('DOMContentLoaded', function(){
 				self.positionCard(cardElement, k);
 			});
 
-			// Set listener for shuffle btn
-			self.buttons.shuffle.addEventListener('click', self.shuffleCards.bind(this));
+			// Set listeners
+			self.buttons.shuffle.addEventListener('click', self.shuffleCards.bind(self));
+			self.buttons.reset.addEventListener('click', self.reset.bind(self));
 
 		}
 

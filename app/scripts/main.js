@@ -22,12 +22,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			var self = this;
 
-			console.log("dealFlip!");
-			console.log(self.myRandomCards);
 			self.shuffleCards();
 
 			self.myRandomCards.forEach(function(cardElement, k){
+				k = 2 + k;
+				cardElement.style.webkitTransform = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
 				cardElement.style.webkitTransform = cardElement.style.webkitTransform.replace('rotateY(180deg)', '');
+
 			});
 
 		},
@@ -129,9 +130,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			var self = this;
 			
-			console.log("reset");
-			console.log(self.cards);
-
 			self.myCards = self.cards.slice();
 
 			self.myCards.forEach(function(cardElement, k){
@@ -162,7 +160,8 @@ document.addEventListener('DOMContentLoaded', function(){
 				self.myCards = self.shuffleArray(self.myCards);
 
 				self.myCards.forEach(function(cardElement, k){
-					self.positionCard(cardElement, k);
+					//self.positionCard(cardElement, k);
+					self.positionCardOnDeck(cardElement, k);
 				});
 
 			};
@@ -201,6 +200,19 @@ document.addEventListener('DOMContentLoaded', function(){
 			container.appendChild(card);
 
 			document.getElementById('table').appendChild(container);
+
+		},
+		
+		positionCardOnDeck: function(element, index){
+
+			var self = this;
+			var row = parseInt(index / 13);
+			var posX = index + 'px';
+			var posY = index + 'px';
+
+			element.parentNode.style.zIndex = 52 - index;
+			element.style.webkitTransform = 'translate(' + posX + ', ' + posY + ')';
+			self.flipped ? element.style.webkitTransform += ' ' + 'rotateY(180deg)' : null;
 
 		},
 

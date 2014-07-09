@@ -2,171 +2,223 @@
   width: 100%;
   height: 500px; }
 
+.container {
+  position: relative;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  -o-perspective: 1000;
+  margin: 0 0 20px 0; }
+
 .card {
   width: 74px;
   height: 98px;
-  background-image: url(../images/playing-cards.png);
-  background-repeat: no-repeat;
   margin: 15px;
   position: absolute;
   top: 0;
   left: 0;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
-  transition: all 1s ease; }
+  transition: all 1s ease;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+  -moz-transform-style: preserve-3d;
+  -moz-transition: 0.5s;
+  -ms-transform-style: preserve-3d;
+  -ms-transition: 0.5s;
+  -o-transform-style: preserve-3d;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer; }
 
-.card-1 {
+.card:hover {
+  -webkit-transform: rotateX(180deg); }
+
+.card .face {
+  background-image: url(../images/playing-cards.png);
+  background-repeat: no-repeat; }
+
+.card .back {
+  background-image: url(../images/card-cover.jpg);
+  background-repeat: no-repeat; }
+
+.card-1 .front {
   background-position: -73px 0px; }
 
-.card-2 {
+.card-2 .front {
   background-position: -146px 0px; }
 
-.card-3 {
+.card-3 .front {
   background-position: -219px 0px; }
 
-.card-4 {
+.card-4 .front {
   background-position: -292px 0px; }
 
-.card-5 {
+.card-5 .front {
   background-position: -365px 0px; }
 
-.card-6 {
+.card-6 .front {
   background-position: -438px 0px; }
 
-.card-7 {
+.card-7 .front {
   background-position: -511px 0px; }
 
-.card-8 {
+.card-8 .front {
   background-position: -584px 0px; }
 
-.card-9 {
+.card-9 .front {
   background-position: -657px 0px; }
 
-.card-10 {
+.card-10 .front {
   background-position: -730px 0px; }
 
-.card-11 {
+.card-11 .front {
   background-position: -803px 0px; }
 
-.card-12 {
+.card-12 .front {
   background-position: -876px 0px; }
 
-.card-13 {
+.card-13 .front {
   background-position: 0px 0px; }
 
-.card-14 {
+.card-14 .front {
   background-position: -73px -98px; }
 
-.card-15 {
+.card-15 .front {
   background-position: -146px -98px; }
 
-.card-16 {
+.card-16 .front {
   background-position: -219px -98px; }
 
-.card-17 {
+.card-17 .front {
   background-position: -292px -98px; }
 
-.card-18 {
+.card-18 .front {
   background-position: -365px -98px; }
 
-.card-19 {
+.card-19 .front {
   background-position: -438px -98px; }
 
-.card-20 {
+.card-20 .front {
   background-position: -511px -98px; }
 
-.card-21 {
+.card-21 .front {
   background-position: -584px -98px; }
 
-.card-22 {
+.card-22 .front {
   background-position: -657px -98px; }
 
-.card-23 {
+.card-23 .front {
   background-position: -730px -98px; }
 
-.card-24 {
+.card-24 .front {
   background-position: -803px -98px; }
 
-.card-25 {
+.card-25 .front {
   background-position: -876px -98px; }
 
-.card-26 {
+.card-26 .front {
   background-position: 0px -98px; }
 
-.card-27 {
+.card-27 .front {
   background-position: -73px -196px; }
 
-.card-28 {
+.card-28 .front {
   background-position: -146px -196px; }
 
-.card-29 {
+.card-29 .front {
   background-position: -219px -196px; }
 
-.card-30 {
+.card-30 .front {
   background-position: -292px -196px; }
 
-.card-31 {
+.card-31 .front {
   background-position: -365px -196px; }
 
-.card-32 {
+.card-32 .front {
   background-position: -438px -196px; }
 
-.card-33 {
+.card-33 .front {
   background-position: -511px -196px; }
 
-.card-34 {
+.card-34 .front {
   background-position: -584px -196px; }
 
-.card-35 {
+.card-35 .front {
   background-position: -657px -196px; }
 
-.card-36 {
+.card-36 .front {
   background-position: -730px -196px; }
 
-.card-37 {
+.card-37 .front {
   background-position: -803px -196px; }
 
-.card-38 {
+.card-38 .front {
   background-position: -876px -196px; }
 
-.card-39 {
+.card-39 .front {
   background-position: 0px -196px; }
 
-.card-40 {
+.card-40 .front {
   background-position: -73px -294px; }
 
-.card-41 {
+.card-41 .front {
   background-position: -146px -294px; }
 
-.card-42 {
+.card-42 .front {
   background-position: -219px -294px; }
 
-.card-43 {
+.card-43 .front {
   background-position: -292px -294px; }
 
-.card-44 {
+.card-44 .front {
   background-position: -365px -294px; }
 
-.card-45 {
+.card-45 .front {
   background-position: -438px -294px; }
 
-.card-46 {
+.card-46 .front {
   background-position: -511px -294px; }
 
-.card-47 {
+.card-47 .front {
   background-position: -584px -294px; }
 
-.card-48 {
+.card-48 .front {
   background-position: -657px -294px; }
 
-.card-49 {
+.card-49 .front {
   background-position: -730px -294px; }
 
-.card-50 {
+.card-50 .front {
   background-position: -803px -294px; }
 
-.card-51 {
+.card-51 .front {
   background-position: -876px -294px; }
 
-.card-52 {
+.card-52 .front {
   background-position: 0px -294px; }
+
+.front {
+  z-index: 10; }
+
+.back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg); }
+
+.face {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  line-height: 50px;
+  text-align: center; }

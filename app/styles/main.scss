@@ -4,19 +4,48 @@
 	width: 100%;
 	height: 500px;
 }
+.container {
+	position: relative;
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-ms-perspective: 1000;
+	-o-perspective: 1000;
+	margin: 0 0 20px 0;
+}
+
 .card {
 	width: 74px;
 	height: 98px;
-	background-image: url(../images/playing-cards.png);
-	background-repeat: no-repeat;
 	margin: 15px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	@include transition(all 1s ease);
+
+	-webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.5s;
+	-moz-transform-style: preserve-3d;
+	-moz-transition: 0.5s;
+	-ms-transform-style: preserve-3d;
+	-ms-transition: 0.5s;
+	-o-transform-style: preserve-3d;
+	-o-transition: 0.5s;
+	transition: 0.5s;
+	cursor:pointer;
+}
+.card:hover {
+  -webkit-transform: rotateX(180deg);
+}
+.card .face {
+	background-image: url(../images/playing-cards.png);
+	background-repeat: no-repeat;
+}
+.card .back {
+	background-image: url(../images/card-cover.jpg);
+	background-repeat: no-repeat;
 }
 @for $i from 1 through 52 {
-	.card-#{$i} {
+	.card-#{$i} .front {
 		
 		@if $i <= 13 {
 
@@ -37,4 +66,29 @@
 		}
 
 	}
+}
+.front {
+	z-index: 10;
+}
+.back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.face {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: white;
+	line-height: 50px;
+	text-align: center;
 }

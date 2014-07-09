@@ -15,6 +15,43 @@ document.addEventListener('DOMContentLoaded', function(){
 			deal: document.getElementById('deal'),
 			reset: document.getElementById('reset')		
 		},
+		flipped: false,
+
+		flipCards: function(showFace, callback){
+
+			var self = this;
+			var delay = 40;
+			var timeout = 0;
+			var rotation = showFace ? 180 : 0;
+			var i = 0;
+
+			if (self.flipped){
+
+				callback();
+
+			} else {
+
+				self.myCards.forEach(function(cardElement, k){
+				
+					setTimeout(function(){
+						
+						i++;
+						cardElement.style.webkitTransform += ' ' + 'rotateY(' + rotation + 'deg)';
+
+						i === self.myCards.length ? setTimeout(function(){ callback() }, 400) : null;
+
+					}, timeout);
+
+					timeout += delay;
+
+				});
+
+			}
+
+			self.flipped = showFace;
+
+
+		},
 
 		reset: function(){
 
@@ -47,12 +84,18 @@ document.addEventListener('DOMContentLoaded', function(){
 		shuffleCards: function(){
 
 			var self = this;
-			
-			self.myCards = self.shuffleArray(self.myCards);
 
-			self.myCards.forEach(function(cardElement, k){
-				self.positionCard(cardElement, k);
-			});
+			var run = function(){
+
+				self.myCards = self.shuffleArray(self.myCards);
+
+				self.myCards.forEach(function(cardElement, k){
+					self.positionCard(cardElement, k);
+				});
+
+			};
+
+			self.flipCards(true, run.bind(this));
 
 		},
 
@@ -68,9 +111,24 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		createCard: function(index){
 
-			var div = document.createElement("div");
-			div.className = 'card card-' + index;
-			document.getElementById('table').appendChild(div);
+			var container = document.createElement('container');
+			container.className = 'container';
+
+			var card = document.createElement('div');
+			card.className = 'card card-' + index;
+
+			var faceFront = document.createElement('div');
+			faceFront.className = 'face front';
+
+			var faceBack = document.createElement('div');
+			faceBack.className = 'face back';
+
+			card.appendChild(faceFront);
+			card.appendChild(faceBack);
+
+			container.appendChild(card);
+
+			document.getElementById('table').appendChild(container);
 
 		},
 
@@ -82,6 +140,8 @@ document.addEventListener('DOMContentLoaded', function(){
 			var posY = (row * (self.height + self.margin)) + 'px';
 
 			element.style.webkitTransform = 'translate(' + posX + ', ' + posY + ')';
+			self.flipped ? element.style.webkitTransform += ' ' + 'rotateY(180deg)' : null;
+			console.log(self.flipped);
 
 		},
 

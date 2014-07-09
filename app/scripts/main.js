@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		height: 98,
 		margin: 5,
 		myCards: [],
+		buttons: {
+			shuffle: document.getElementById('shuffle')
+		},
 
 		cardsToArray: function(){
 
@@ -24,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		shuffleCards: function(){
 
 			var self = this;
+
+			console.log("my shuffleCards fn called!");
+			console.log(self.myCards);
 
 			self.myCards = self.shuffleArray(self.myCards)
 
@@ -77,6 +83,8 @@ document.addEventListener('DOMContentLoaded', function(){
 		init: function(){
 
 			var self = this;
+
+			// Create cards and set default position
 			var cards;
 
 			self.generateCards();
@@ -85,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function(){
 			self.myCards.forEach(function(cardElement, k){
 				self.positionCard(cardElement, k);
 			});
+
+			// Set listener for shuffle btn
+			self.buttons.shuffle.addEventListener('click', self.shuffleCards.bind(this));
 
 		}
 

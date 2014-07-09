@@ -1,0 +1,33 @@
+.card {
+	width: 74px;
+	height: 98px;
+	background-image: url(../images/playing-cards.png);
+	background-repeat: no-repeat;
+	margin: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+@for $i from 1 through 52 {
+	.card-#{$i} {
+		
+		@if $i <= 13 {
+
+			background-position: 0px + if(($i%13)==13, 0, -73 * ($i%13)) 0px;
+
+		} @else if $i <= 26 {
+
+			background-position: 0px + if(($i%13)==13, 0, -73 * ($i%13)) -98px;
+
+		} @else if $i <= 39 {
+
+			background-position: 0px + if(($i%13)==13, 0, -73 * ($i%13)) -196px;
+
+		} @else if $i <= 52 {
+
+			background-position: 0px + if(($i%13)==13, 0, -73 * ($i%13)) -294px;
+
+		}
+
+	}
+}

@@ -10,12 +10,84 @@ document.addEventListener('DOMContentLoaded', function(){
 		margin: 5,
 		cards: [],
 		myCards: [],
+		myRandomCards: [],
 		buttons: {
 			shuffle: document.getElementById('shuffle'),
 			deal: document.getElementById('deal'),
 			reset: document.getElementById('reset')		
 		},
 		flipped: false,
+
+		dealFlip: function(){
+
+			var self = this;
+
+			console.log("dealFlip!");
+			console.log(self.myRandomCards);
+			self.shuffleCards();
+
+			self.myRandomCards.forEach(function(cardElement, k){
+				cardElement.style.webkitTransform = cardElement.style.webkitTransform.replace('rotateY(180deg)', '');
+			});
+
+		},
+
+		deal: function(){
+
+			var self = this;
+			var nrs = self.generateRandomNrs();
+
+			self.getCardsByIndex(nrs);
+
+			self.flipCards(true, self.dealFlip.bind(self));
+
+		},
+
+		getCardsByIndex: function(nrCollection){
+
+			var self = this;
+			self.myRandomCards = [];
+
+			nrCollection.forEach(function(index){
+				
+				var el = document.getElementsByClassName('card-' + index)[0];
+				self.myRandomCards.push(el);
+
+			});
+
+		},
+
+		generateRandomNrs: function(){
+
+			var self = this;
+			var total = 5;
+			var collection = [];
+
+			// generate 5 random nrs
+			while(collection.length < total){
+
+			  var num = Math.ceil(Math.random()*(self.myCards.length - collection.length)), i;
+
+			  for (i=0; i < collection.length; i++) {
+
+			    if(collection[i] <= num){
+				
+					num++;
+			    
+			    } else {
+				
+					break;
+			    }
+
+			  };
+
+			  collection.splice(i, 0, num);
+			
+			}
+
+			return collection;
+
+		},
 
 		flipCards: function(showFace, callback){
 
@@ -172,6 +244,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			// Set listeners
 			self.buttons.shuffle.addEventListener('click', self.shuffleCards.bind(self));
 			self.buttons.reset.addEventListener('click', self.reset.bind(self));
+			self.buttons.deal.addEventListener('click', self.deal.bind(self));
 
 		}
 

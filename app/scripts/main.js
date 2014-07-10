@@ -1,5 +1,7 @@
 'use strict';
 
+console.log(Modernizr.prefixed('transform'));
+
 document.addEventListener('DOMContentLoaded', function(){
 
 
@@ -27,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			self.myRandomCards.forEach(function(cardElement, k){
 				k = 2 + k;
-				cardElement.style.transform = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
-				cardElement.style.transform = cardElement.style.transform.replace('rotateY(180deg)', '');
+				cardElement.style[transform] = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
+				cardElement.style[transform] = cardElement.style[transform].replace('rotateY(180deg)', '');
 
 			});
 
@@ -114,11 +116,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 						if (showFace) {
 						
-							cardElement.style.transform += ' ' + 'rotateY(' + rotation + 'deg)';
+							cardElement.style[transform] += ' ' + 'rotateY(' + rotation + 'deg)';
 						
 						} else {
 						
-							cardElement.style.transform = cardElement.style.transform.replace('rotateY(180deg)', '');
+							cardElement.style[transform] = cardElement.style[transform].replace('rotateY(180deg)', '');
 						
 						}
 
@@ -227,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function(){
 			var transform = Modernizr.prefixed('transform');
 
 			element.parentNode.style.zIndex = 52 - index;
-			element.style.transform = 'translate(' + posX + ', ' + posY + ')';
-			self.flipped ? element.style.transform += ' ' + 'rotateY(180deg)' : null;
+			element.style[transform] = 'translate(' + posX + ', ' + posY + ')';
+			self.flipped ? element.style[transform] += ' ' + 'rotateY(180deg)' : null;
 
 		},
 
@@ -240,8 +242,8 @@ document.addEventListener('DOMContentLoaded', function(){
 			var posY = (row * (self.height + self.margin)) + 'px';
 			var transform = Modernizr.prefixed('transform');
 
-			element.style.transform = 'translate(' + posX + ', ' + posY + ')';
-			self.flipped ? element.style.transform += ' ' + 'rotateY(180deg)' : null;
+			element.style[transform] = 'translate(' + posX + ', ' + posY + ')';
+			self.flipped ? element.style[transform] += ' ' + 'rotateY(180deg)' : null;
 
 		},
 

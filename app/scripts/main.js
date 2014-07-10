@@ -21,13 +21,14 @@ document.addEventListener('DOMContentLoaded', function(){
 		dealFlip: function(){
 
 			var self = this;
+			var transform = Modernizr.prefixed('transform');
 
 			self.shuffleCards();
 
 			self.myRandomCards.forEach(function(cardElement, k){
 				k = 2 + k;
-				cardElement.style.webkitTransform = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
-				cardElement.style.webkitTransform = cardElement.style.webkitTransform.replace('rotateY(180deg)', '');
+				cardElement.style.transform = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
+				cardElement.style.transform = cardElement.style.transform.replace('rotateY(180deg)', '');
 
 			});
 
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			var timeout = 0;
 			var rotation = showFace ? 180 : 0;
 			var i = 0;
+			var transform = Modernizr.prefixed('transform');
 
 			if (self.flipped){
 
@@ -112,15 +114,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
 						if (showFace) {
 						
-							cardElement.style.webkitTransform += ' ' + 'rotateY(' + rotation + 'deg)';
+							cardElement.style.transform += ' ' + 'rotateY(' + rotation + 'deg)';
 						
 						} else {
 						
-							cardElement.style.webkitTransform = cardElement.style.webkitTransform.replace('rotateY(180deg)', '');
+							cardElement.style.transform = cardElement.style.transform.replace('rotateY(180deg)', '');
 						
 						}
 
-						i === self.myCards.length ? setTimeout(function(){ callback() }, 400) : null;
+						i === self.myCards.length ? setTimeout(function(){ typeof(callback) === "function" ? callback() : null }, 400) : null;
 
 					}, timeout);
 
@@ -222,10 +224,11 @@ document.addEventListener('DOMContentLoaded', function(){
 			var row = parseInt(index / 13);
 			var posX = index + 'px';
 			var posY = index + 'px';
+			var transform = Modernizr.prefixed('transform');
 
 			element.parentNode.style.zIndex = 52 - index;
-			element.style.webkitTransform = 'translate(' + posX + ', ' + posY + ')';
-			self.flipped ? element.style.webkitTransform += ' ' + 'rotateY(180deg)' : null;
+			element.style.transform = 'translate(' + posX + ', ' + posY + ')';
+			self.flipped ? element.style.transform += ' ' + 'rotateY(180deg)' : null;
 
 		},
 
@@ -235,9 +238,10 @@ document.addEventListener('DOMContentLoaded', function(){
 			var row = parseInt(index / 13);
 			var posX = (index % 13) * (self.width + self.margin) + 'px';
 			var posY = (row * (self.height + self.margin)) + 'px';
+			var transform = Modernizr.prefixed('transform');
 
-			element.style.webkitTransform = 'translate(' + posX + ', ' + posY + ')';
-			self.flipped ? element.style.webkitTransform += ' ' + 'rotateY(180deg)' : null;
+			element.style.transform = 'translate(' + posX + ', ' + posY + ')';
+			self.flipped ? element.style.transform += ' ' + 'rotateY(180deg)' : null;
 
 		},
 

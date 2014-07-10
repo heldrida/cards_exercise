@@ -21,28 +21,44 @@ document.addEventListener('DOMContentLoaded', function(){
 		flipped: false,
 
 		dealFlip: function(){
+			
+			console.log("dealFlip fn()");
 
 			var self = this;
+			var delay = 150;
+			var timeout = 0;
 			var transform = Modernizr.prefixed('transform');
 
 			self.shuffleCards();
 
-			self.myRandomCards.forEach(function(cardElement, k){
-				k = 2 + k;
-				cardElement.style[transform] = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
-				cardElement.style[transform] = cardElement.style[transform].replace('rotateY(180deg)', '');
 
-			});
+			setTimeout(function(){
+
+				self.myCards.slice(0, 5).forEach(function(cardElement, k){
+					console.log(k);
+					if (k <= 5){
+
+						setTimeout(function(){
+							
+							k = 2 + k;
+							cardElement.style[transform] = 'translate(' + (k * (self.width + self.margin)) + 'px, 51px)';
+							cardElement.style[transform] = cardElement.style[transform].replace('rotateY(180deg)', '');
+
+						}, timeout);
+
+						timeout += delay;
+
+					}
+
+				});
+
+			}, 800);
 
 		},
 
 		deal: function(){
-
+			console.log("Deal fn()");
 			var self = this;
-			var nrs = self.generateRandomNrs();
-
-			self.getCardsByIndex(nrs);
-
 			self.flipCards(true, self.dealFlip.bind(self));
 
 		},

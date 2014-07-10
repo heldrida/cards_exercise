@@ -111,10 +111,14 @@ document.addEventListener('DOMContentLoaded', function(){
 						i++;
 
 						if (showFace) {
+						
 							cardElement.style.webkitTransform += ' ' + 'rotateY(' + rotation + 'deg)';
+						
 						} else {
+						
 							cardElement.style.webkitTransform = cardElement.style.webkitTransform.replace('rotateY(180deg)', '');
-						};
+						
+						}
 
 						i === self.myCards.length ? setTimeout(function(){ callback() }, 400) : null;
 
@@ -168,8 +172,9 @@ document.addEventListener('DOMContentLoaded', function(){
 				self.myCards = self.shuffleArray(self.myCards);
 
 				self.myCards.forEach(function(cardElement, k){
-					//self.positionCard(cardElement, k);
+
 					self.positionCardOnDeck(cardElement, k);
+
 				});
 
 			};
@@ -233,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			element.style.webkitTransform = 'translate(' + posX + ', ' + posY + ')';
 			self.flipped ? element.style.webkitTransform += ' ' + 'rotateY(180deg)' : null;
-			console.log(self.flipped);
 
 		},
 

@@ -15,8 +15,7 @@ body {
   position: relative;
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
-  -ms-perspective: 1000;
-  -o-perspective: 1000;
+  perspective: 1000;
   margin: 0 0 20px 0; }
 
 .card {
@@ -30,18 +29,21 @@ body {
   -moz-transition: all 1s ease;
   transition: all 1s ease;
   -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
   -moz-transform-style: preserve-3d;
-  -moz-transition: 0.5s;
   -ms-transform-style: preserve-3d;
-  -ms-transition: 0.5s;
   -o-transform-style: preserve-3d;
-  -o-transition: 0.5s;
+  transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
   transition: 0.5s;
   cursor: pointer; }
 
 .card:hover {
-  -webkit-transform: rotateX(180deg); }
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  transform: rotateX(180deg); }
 
 .card .face {
   background-image: url(../images/playing-cards.png);
@@ -220,9 +222,6 @@ body {
 .face {
   position: absolute;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
   backface-visibility: hidden;
   top: 0;
   left: 0;

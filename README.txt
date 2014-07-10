@@ -1,8 +1,6 @@
 JavaScript exercise
 
-We’d like you to create an application that displays some cards and allows the user to do some simple card manipulation.
-
-You should also have “playing-cards.png” – an image showing all available cards in a standard deck – although feel free to find and use your own images if you like.
+Application that displays some cards and allows the user to do some simple card manipulation.
 
 The Task
 
@@ -15,3 +13,5 @@ When the “Shuffle” button is clicked then the cards in the deck should be pl
 When the “Deal” button is clicked then five cards are shown face up to the user, taken from the top of the deck. The new cards replace the cards already dealt (if there are any). The used cards are placed on the bottom of the deck.
 
 When the “Reset” button is clicked then all cards are removed from display and the card deck is set back to the original consecutive order.
+
+Live version: http://cards.punkbit.com/

@@ -13,6 +13,23 @@ body {
 	height: auto;
 	margin: 0 auto;
 }
+.title {
+	width: 1000px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+
+	h1 {
+		font-family: helvetica, sans-serif;
+		color: #5cbf2a;
+		padding: 0;
+		margin: 0;
+	}
+	p {
+		color: #fff;
+		font-family: arial, sans-serif;
+		font-weight: normal;
+	}
+}
 .container {
 	position: relative;
 	@include perspective(1000);

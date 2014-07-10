@@ -22,15 +22,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		dealFlip: function(){
 			
-			console.log("dealFlip fn()");
-
 			var self = this;
 			var delay = 150;
 			var timeout = 0;
 			var transform = Modernizr.prefixed('transform');
 
 			self.shuffleCards();
-
 
 			setTimeout(function(){
 
@@ -57,55 +54,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		},
 
 		deal: function(){
-			console.log("Deal fn()");
+
 			var self = this;
 			self.flipCards(true, self.dealFlip.bind(self));
-
-		},
-
-		getCardsByIndex: function(nrCollection){
-
-			var self = this;
-			self.myRandomCards = [];
-
-			nrCollection.forEach(function(index){
-				
-				var el = document.getElementsByClassName('card-' + index)[0];
-				self.myRandomCards.push(el);
-
-			});
-
-		},
-
-		generateRandomNrs: function(){
-
-			var self = this;
-			var total = 5;
-			var collection = [];
-
-			// generate 5 random nrs
-			while(collection.length < total){
-
-			  var num = Math.ceil(Math.random()*(self.myCards.length - collection.length)), i;
-
-			  for (i=0; i < collection.length; i++) {
-
-			    if(collection[i] <= num){
-				
-					num++;
-			    
-			    } else {
-				
-					break;
-			    }
-
-			  };
-
-			  collection.splice(i, 0, num);
-			
-			}
-
-			return collection;
 
 		},
 

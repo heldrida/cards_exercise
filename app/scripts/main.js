@@ -109,7 +109,12 @@ document.addEventListener('DOMContentLoaded', function(){
 					setTimeout(function(){
 						
 						i++;
-						cardElement.style.webkitTransform += ' ' + 'rotateY(' + rotation + 'deg)';
+
+						if (showFace) {
+							cardElement.style.webkitTransform += ' ' + 'rotateY(' + rotation + 'deg)';
+						} else {
+							cardElement.style.webkitTransform = cardElement.style.webkitTransform.replace('rotateY(180deg)', '');
+						};
 
 						i === self.myCards.length ? setTimeout(function(){ callback() }, 400) : null;
 
@@ -135,6 +140,9 @@ document.addEventListener('DOMContentLoaded', function(){
 			self.myCards.forEach(function(cardElement, k){
 				self.positionCard(cardElement, k);
 			});
+
+			self.flipped = false;
+			self.flipCards(false);
 
 		},
 
